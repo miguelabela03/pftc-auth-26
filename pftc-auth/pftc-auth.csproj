@@ -5,6 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>pftc_auth</RootNamespace>
+    <UserSecretsId>53d9aed1-9ee1-46f5-8696-34eec6e3f0fc</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.24" />
+  </ItemGroup>
 
 </Project>
