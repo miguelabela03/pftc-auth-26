@@ -22,7 +22,7 @@ namespace pftc_auth.Controllers
                 return RedirectToAction("Login");
             }
 
-            return RedirectToAction("Index", controllerName: "Home");
+            return RedirectToAction("Index", controllerName: "Social");
         }
 
         public IActionResult Logout()

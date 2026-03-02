@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SocialMediaPost>
+
+@{
+    ViewBag.Title = "SocialSpace";
+}
+
+<div class="container mt-5">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Create Post</h2>
+        </div>
+        <div class="car-body">
+            <form id="postForm" method="post" asp-asp-controller="Social" asp-action="CreatePost" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="PostContent">What's on your mind?'</label>
+                    <textarea class="form-control" id="PostContent" name="PostContent" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="SubmitPost">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
