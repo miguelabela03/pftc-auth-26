@@ -16,10 +16,12 @@ namespace pftc_auth.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var posts = await _repo.GetPosts();
+            return View(posts);
         }
+
 
         [Authorize]
         [HttpPost]

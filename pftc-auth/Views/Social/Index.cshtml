@@ -9,7 +9,7 @@
         <div class="card-header">
             <h2>Create Post</h2>
         </div>
-        <div class="car-body">
+        <div class="card-body">
             <form id="postForm" method="post" asp-asp-controller="Social" asp-action="CreatePost" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="PostContent">What's on your mind?'</label>
@@ -19,4 +19,20 @@
             </form>
         </div>
     </div>
+
+    <!-- Display the existing posts -->
+    @foreach (SocialMediaPost post in Model)
+    {
+        //Render each post here
+        <div id="@Html.DisplayFor(item => post.PostId)" class="card mb-3">
+            <div class="card-header">
+                <!-- Buttons here later -->
+            </div>
+            <div class="card-body">
+                <p>@Html.DisplayFor(item => post.PostContent)</p>
+                <h6>@Html.DisplayFor(item => post.PostAuthor)</h6>
+            </div>
+        </div>
+    }
+
 </div>
