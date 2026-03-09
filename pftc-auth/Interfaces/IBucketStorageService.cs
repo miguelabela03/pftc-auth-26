@@ -1,0 +1,10 @@
+﻿
+
+namespace pftc_auth.Interfaces
+{
+    public interface IBucketStorageService
+    {
+        Task<string> UploadFileAsync(IFormFile file, string fileNameForStorage);
+        Task DeleteFileAsync(string fileName);
+    }
+}
