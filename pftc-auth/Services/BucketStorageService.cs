@@ -28,6 +28,12 @@ namespace pftc_auth.Services
                 throw new ArgumentNullException(nameof(file), "File is empty or null");
             }
 
+            string[] permittedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+            if (!permittedExtensions.Contains(Path.GetExtension(file.FileName).ToLowerInvariant()))
+            {
+                throw new ArgumentException(nameof(file), "File extension is not accepted. Allowed extensions: " + string.Join(",", permittedExtensions));
+            }
+
             try
             {
                 if (string.IsNullOrWhiteSpace(fileNameForStorage))

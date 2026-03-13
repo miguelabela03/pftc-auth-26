@@ -18,5 +18,10 @@ namespace pftc_auth.Models
         
         [FirestoreProperty]
         public DateTimeOffset PostDate { get; set; }
+
+        [FirestoreProperty]
+        public string ImageUrl { get; set; }
+
+        public IFormFile ImageFile { get; set; }
     }
 }
