@@ -10,20 +10,50 @@
             <h2>Create Post</h2>
         </div>
         <div class="card-body">
-            <form id="postForm" method="post" asp-asp-controller="Social" asp-action="CreatePost" enctype="multipart/form-data">
+            <form id="postForm" method="post" asp-controller="Social" asp-action="CreatePost" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="PostContent">What's on your mind?'</label>
-                    <textarea class="form-control" id="PostContent" name="PostContent" rows="3"></textarea>
+                    <label for="PostContent">What's on your mind?</label>
+                    <textarea class="form-control" id="PostContent" name="PostContent" rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" id="SubmitPost">Post</button>
+                <div class="form-group mt-3">
+                    <label>Attach Image <span class="text-muted">(optional)</span></label>
+                    <div>
+                        <input type="file" id="PostImage" name="PostImage" accept="image/*" class="d-none" />
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="SelectImageBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image me-1" viewBox="0 0 16 16">
+                                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                            </svg>
+                            Add Image
+                        </button>
+                    </div>
+                    <div id="ImagePreviewContainer" class="mt-2 d-none">
+                        <div class="position-relative d-inline-block">
+                            <img id="ImagePreview" src="#" alt="Image preview" class="img-thumbnail" style="max-height: 200px; max-width: 100%;" />
+                            <button type="button" id="RemoveImageBtn" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-1" title="Remove image">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-1">
+                            <small class="text-muted" id="ImageFileName"></small>
+                            <button type="button" class="btn btn-link btn-sm p-0 ms-2" id="ReplaceImageBtn">Replace</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2" id="SubmitPost">Post</button>
             </form>
         </div>
     </div>
 
+    @section Scripts {
+        <script src="~/js/social.js"></script>
+    }
     <!-- Display the existing posts -->
     @foreach (SocialMediaPost post in Model)
     {
-        //Render each post here
+        // Render each post here
         <div id="@Html.DisplayFor(item => post.PostId)" class="card mb-3">
             <div class="card-header">
                 <!-- Buttons here later -->
